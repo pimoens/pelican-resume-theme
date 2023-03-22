@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Pieter Moens">
+    <meta name="description" content="Resume of Pieter Moens">
+    <link rel="icon" href="{{ SITEURL }}/images/favicon.png">
+
+    <title>{{ SITENAME }} | Resume</title>
+
+    {% block stylesheets %}
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/vendors/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/vendors/fontawesome/css/all.min.css">
+
+    <!-- TailwindCSS -->
+    <link href="{{ SITEURL }}/output.css" rel="stylesheet">
+    {% endblock stylesheets %}
+</head>
+<body>
+{% block sidebar %}
+{#{% include 'resume/sidebar.html' %}#}
+{% endblock sidebar %}
+
+{% block content %}
+<!-- Content -->
+{% endblock content %}
+
+
+{% block javascripts %}
+<!-- Bootstrap core JavaScript -->
+<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/vendors/jquery/jquery.min.js"></script>
+<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/vendors/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/resume.js"></script>
+{% endblock javascripts %}
+</body>
+</html>
