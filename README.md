@@ -1,4 +1,4 @@
-# Pieter Moens | [Personal Resume](https://resume.pietermoens.be)
+# Resume theme for Pelican using TailwindCSS
 
 Web design using [TailwindCSS](https://tailwindcss.com/)
 
