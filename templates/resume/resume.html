@@ -11,7 +11,7 @@
             <div class="font-sans">
                 <div class="flex flex-wrap text-8xl uppercase gap-x-2">
                     <span class="font-bold text-gray-800">{{ resume.about.name.split(' ')[0] }}</span>
-                    <span class="font-bold text-amber-700">{{ ' '.join(resume.about.name.split(' ')[1:]) }}</span>
+                    <span class="font-bold text-{{ PRIMARY_COLOR }}">{{ ' '.join(resume.about.name.split(' ')[1:]) }}</span>
                 </div>
                 <div class="flex flex-wrap gap-x-2 uppercase font-medium text-xl text-gray-500">
                     {% if resume.about.location %}
@@ -27,7 +27,7 @@
                     {% endif %}
                     {% if resume.about.email %}
                         ·
-                        <span class="text-amber-700"><i class="fa-solid fa-envelope"></i>
+                        <span class="text-{{ PRIMARY_COLOR }}"><i class="fa-solid fa-envelope"></i>
                         <a href="mailto:{{ resume.about.email }}">{{ resume.about.email }}</a>
                     </span>
                     {% endif %}
@@ -42,7 +42,7 @@
             <div class="flex flex-wrap gap-x-2">
                 {% for icon, name, href in SOCIAL %}
                     <a href="{{ href }}" title="{{ name }}" target="_blank"><i
-                            class="text-gray-800 text-3xl hover:text-amber-700 fa-brands fa-{{ icon }}"></i></a>
+                            class="text-gray-800 text-3xl hover:text-{{ PRIMARY_COLOR }} fa-brands fa-{{ icon }}"></i></a>
                 {% endfor %}
             </div>
             <div class="text-gray-500">
@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
                                         <div class="col-span-1">
-                                            <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                            <div class="flex gap-x-1 text-sm text-{{ PRIMARY_COLOR }} font-semibold lg:justify-end">
                                                 <div>{{ experience.start }}</div>
                                                 -
                                                 <div>{{ experience.end }}</div>
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="col-span-1">
-                                        <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                        <div class="flex gap-x-1 text-sm text-{{ PRIMARY_COLOR }} font-semibold lg:justify-end">
                                             <div>{{ education.start }}</div>
                                             -
                                             <div>{{ education.end }}</div>
@@ -140,7 +140,7 @@
                             <div class="flex flex-col gap-y-5">
                                 <div class="lg:grid grid-cols-5">
                                     <div class="col-span-4 mb-5">
-                                        <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-amber-700">
+                                        <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-{{ PRIMARY_COLOR }}">
                                             <a href="{{ publication.doi }}">{{ publication.title }}</a>
                                         </div>
                                         <div class="font-sans font-semibold text-l text-gray-500">
@@ -148,14 +148,14 @@
                                         </div>
                                     </div>
                                     <div class="col-span-1">
-                                        <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                        <div class="flex gap-x-1 text-sm text-{{ PRIMARY_COLOR }} font-semibold lg:justify-end">
                                             <div>{{ publication.journal }}, {{ publication.year }}</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-gray-600"><span>{{ publication.content }}</span>
                                 </div>
-                                <div class="text-amber-700"><span>{{ publication.keywords }}</span>
+                                <div class="text-{{ PRIMARY_COLOR }}"><span>{{ publication.keywords }}</span>
                                 </div>
                             </div>
                         {% endfor %}
@@ -176,7 +176,7 @@
                             <div class="flex flex-col gap-y-5">
                                 <div class="lg:grid grid-cols-5">
                                     <div class="col-span-4 mb-5">
-                                        <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-amber-700">
+                                        <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-{{ PRIMARY_COLOR }}">
                                             <a href="{{ certificate.doi }}">{{ certificate.title }}</a>
                                         </div>
                                         <div class="font-sans font-semibold text-l text-gray-500">
@@ -184,7 +184,7 @@
                                         </div>
                                     </div>
                                     <div class="col-span-1">
-                                        <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                        <div class="flex gap-x-1 text-sm text-{{ PRIMARY_COLOR }} font-semibold lg:justify-end">
                                             <div>{{ certificate.date.strftime('%Y-%m-%d') }}</div>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@
             <div class="flex flex-wrap gap-x-2">
                 <div class="font-sans text-slate-800">{{ skill.title }}</div>
                 <div class="mb-6 h-1 w-full bg-neutral-200 dark:bg-neutral-600">
-                    <div class="h-1 bg-amber-700"
+                    <div class="h-1 bg-{{ PRIMARY_COLOR }}"
                          style="width: {{ skill.level }}%"></div>
                 </div>
             </div>
