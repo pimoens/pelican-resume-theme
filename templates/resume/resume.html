@@ -63,7 +63,7 @@
                         {% for experience_type in resume.experience.keys() if resume.experience[experience_type] %}
                             <h3 class="font-sans font-bold uppercase text-3xl text-slate-800">{{ experience_type.capitalize() }}</h3>
 
-                            {% for experience in resume.experience[experience_type] %}
+                            {% for experience in resume.experience[experience_type]['_items'] %}
                                 <div class="flex flex-col gap-y-5">
                                     <div class="lg:grid grid-cols-5">
                                         <div class="col-span-4 mb-5">
