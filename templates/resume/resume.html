@@ -38,17 +38,15 @@
                 {% endif %}
                 </div>
             </div>
+            <div class="flex flex-wrap gap-x-2">
+                {% for icon, name, href in SOCIAL %}
+                    <a href="{{ href }}" title="{{ name }}" target="_blank"><i class="text-gray-800 text-3xl hover:text-amber-700 fa-brands fa-{{ icon }}"></i></a>
+                {% endfor %}
+            </div>
             <div class="text-gray-500">
                 {{ resume.about.content }}
             </div>
             <div class="flex gap-x-5">
-                {#                {socials.map((social) => (#}
-                {#                <a key={social.name.toLowerCase()} href={social.href} title={social.name}>#}
-                {#                    <#}
-                {#                            class="w-8 h-8 bg-gray-800 hover:bg-amber-700 text-white p-2 rounded-full"#}
-                {#                            icon={social.icon}/>#}
-                {#                </a>#}
-                {#                ))}#}
             </div>
         </section>
 
