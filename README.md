@@ -17,12 +17,6 @@ Install and configure pelican-tailwindcss according to the [documentation](https
 
 ## Usage
 
-### Color theme
-
-```python
-PRIMARY_COLOR = 'amber-700'
-```
-
 ### Socials
 
 ```python
