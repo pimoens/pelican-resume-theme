@@ -17,6 +17,15 @@ Install and configure pelican-tailwindcss according to the [documentation](https
 
 ## Usage
 
+### Socials
+
+```python
+SOCIAL = (('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/pieter-moens-pimoens/'),
+          ('google', 'Google Scholar', 'https://scholar.google.com/citations?user=R6y5jzUAAAAJ'),
+          ('orcid', 'ORCID', 'https://orcid.org/0000-0003-2035-8766'),
+          ('github', 'GitHub', 'https://github.com/pimoens'),
+          ('gitlab', 'GitCoin', 'https://www.gitcoin.co/pimoens'))
+```
 
 
 ## Features

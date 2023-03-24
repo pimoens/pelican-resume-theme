@@ -6,41 +6,43 @@
 
 {% block content %}
     <div class="relative max-w-5xl mx-auto">
-        <section id="about-me" class="flex flex-col gap-y-10 p-10 justify-center border-b-2 min-h-screen">
+        <section id="about-me"
+                 class="flex flex-col gap-y-10 p-10 justify-center border-b-2 min-h-screen">
             <div class="font-sans">
                 <div class="flex flex-wrap text-8xl uppercase gap-x-2">
                     <span class="font-bold text-gray-800">{{ resume.about.name.split(' ')[0] }}</span>
                     <span class="font-bold text-amber-700">{{ ' '.join(resume.about.name.split(' ')[1:]) }}</span>
                 </div>
                 <div class="flex flex-wrap gap-x-2 uppercase font-medium text-xl text-gray-500">
-                {% if resume.about.location %}
-                    <span><i class="fa-solid fa-location-pin"></i>
+                    {% if resume.about.location %}
+                        <span><i class="fa-solid fa-location-pin"></i>
                         {{ resume.about.location }}
                     </span>
-                {% endif %}
-                {% if resume.about.birthday %}
-                    ·
-                    <span>°
+                    {% endif %}
+                    {% if resume.about.birthday %}
+                        ·
+                        <span>°
                         {{ resume.about.birthday }}
                     </span>
-                {% endif %}
-                {% if resume.about.email %}
-                    ·
-                    <span class="text-amber-700"><i class="fa-solid fa-envelope"></i>
+                    {% endif %}
+                    {% if resume.about.email %}
+                        ·
+                        <span class="text-amber-700"><i class="fa-solid fa-envelope"></i>
                         <a href="mailto:{{ resume.about.email }}">{{ resume.about.email }}</a>
                     </span>
-                {% endif %}
-                {% if resume.about.phone %}
-                    ·
-                    <span><i class="fa-solid fa-mobile"></i>
+                    {% endif %}
+                    {% if resume.about.phone %}
+                        ·
+                        <span><i class="fa-solid fa-mobile"></i>
                         {{ resume.about.phone }}
                     </span>
-                {% endif %}
+                    {% endif %}
                 </div>
             </div>
             <div class="flex flex-wrap gap-x-2">
                 {% for icon, name, href in SOCIAL %}
-                    <a href="{{ href }}" title="{{ name }}" target="_blank"><i class="text-gray-800 text-3xl hover:text-amber-700 fa-brands fa-{{ icon }}"></i></a>
+                    <a href="{{ href }}" title="{{ name }}" target="_blank"><i
+                            class="text-gray-800 text-3xl hover:text-amber-700 fa-brands fa-{{ icon }}"></i></a>
                 {% endfor %}
             </div>
             <div class="text-gray-500">
@@ -51,150 +53,187 @@
         </section>
 
         {% if resume.experience %}
-        <section id="experience" class="border-b-2 min-h-screen">
-            <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
-                <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">Experience</div>
+            <section id="experience" class="border-b-2 min-h-screen">
+                <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
+                    <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">
+                        Experience
+                    </div>
 
-                <div class="flex flex-col gap-y-20">
-                    {% for experience_type in resume.experience.keys() if resume.experience[experience_type] %}
-                        <h3 class="font-sans font-bold uppercase text-3xl text-slate-800">{{ experience_type.capitalize() }}</h3>
+                    <div class="flex flex-col gap-y-20">
+                        {% for experience_type in resume.experience.keys() if resume.experience[experience_type] %}
+                            <h3 class="font-sans font-bold uppercase text-3xl text-slate-800">{{ experience_type.capitalize() }}</h3>
 
-                        {% for experience in resume.experience[experience_type] %}
+                            {% for experience in resume.experience[experience_type] %}
+                                <div class="flex flex-col gap-y-5">
+                                    <div class="lg:grid grid-cols-5">
+                                        <div class="col-span-4 mb-5">
+                                            <div class="font-sans font-bold uppercase text-xl text-gray-700">
+                                                {{ experience.title }}
+                                            </div>
+                                            <div class="font-sans font-semibold uppercase text-xl text-gray-500">
+                                                {{ experience.institution }}
+                                            </div>
+                                        </div>
+                                        <div class="col-span-1">
+                                            <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                                <div>{{ experience.start }}</div>
+                                                -
+                                                <div>{{ experience.end }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-gray-600"><span>{{ experience.content }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        {% if resume.education %}
+            <section id="education" class="border-b-2 min-h-screen">
+                <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
+                    <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">
+                        Education
+                    </div>
+
+                    <div class="flex flex-col gap-y-20">
+                        {% for education in resume.education %}
                             <div class="flex flex-col gap-y-5">
                                 <div class="lg:grid grid-cols-5">
                                     <div class="col-span-4 mb-5">
                                         <div class="font-sans font-bold uppercase text-xl text-gray-700">
-                                            {{ experience.title }}
+                                            {{ education.title }}
                                         </div>
                                         <div class="font-sans font-semibold uppercase text-xl text-gray-500">
-                                            {{ experience.institution }}
+                                            {{ education.institution }}
                                         </div>
                                     </div>
                                     <div class="col-span-1">
                                         <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
-                                            <div>{{ experience.start }}</div>
+                                            <div>{{ education.start }}</div>
                                             -
-                                            <div>{{ experience.end }}</div>
+                                            <div>{{ education.end }}</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-gray-600"><span>{{ experience.content }}</span></div>
+                                <div class="text-gray-600"><span>{{ education.content }}</span>
+                                </div>
                             </div>
                         {% endfor %}
-                    {% endfor %}
+                    </div>
                 </div>
-            </div>
-        </section>
-        {% endif %}
-
-        {% if resume.education %}
-        <section id="education" class="border-b-2 min-h-screen">
-            <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
-                <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">Education</div>
-
-                <div class="flex flex-col gap-y-20">
-                    {% for education in resume.education %}
-                        <div class="flex flex-col gap-y-5">
-                            <div class="lg:grid grid-cols-5">
-                                <div class="col-span-4 mb-5">
-                                    <div class="font-sans font-bold uppercase text-xl text-gray-700">
-                                        {{ education.title }}
-                                    </div>
-                                    <div class="font-sans font-semibold uppercase text-xl text-gray-500">
-                                        {{ education.institution }}
-                                    </div>
-                                </div>
-                                <div class="col-span-1">
-                                    <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
-                                        <div>{{ education.start }}</div>
-                                        -
-                                        <div>{{ education.end }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-gray-600"><span>{{ education.content }}</span></div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
 
         {% if resume.publications %}
-        <section id="publications" class="border-b-2 min-h-screen">
-            <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
-                <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">Publications</div>
+            <section id="publications" class="border-b-2 min-h-screen">
+                <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
+                    <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">
+                        Publications
+                    </div>
 
-                <div class="flex flex-col gap-y-20">
-                    {% for publication in resume.publications %}
-                        <div class="flex flex-col gap-y-5">
-                            <div class="lg:grid grid-cols-5">
-                                <div class="col-span-4 mb-5">
-                                    <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-amber-700">
-                                        <a href="{{ publication.doi }}">{{ publication.title }}</a>
+                    <div class="flex flex-col gap-y-20">
+                        {% for publication in resume.publications %}
+                            <div class="flex flex-col gap-y-5">
+                                <div class="lg:grid grid-cols-5">
+                                    <div class="col-span-4 mb-5">
+                                        <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-amber-700">
+                                            <a href="{{ publication.doi }}">{{ publication.title }}</a>
+                                        </div>
+                                        <div class="font-sans font-semibold text-l text-gray-500">
+                                            {{ publication.author }}
+                                        </div>
                                     </div>
-                                    <div class="font-sans font-semibold text-l text-gray-500">
-                                        {{ publication.author }}
+                                    <div class="col-span-1">
+                                        <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                            <div>{{ publication.journal }}, {{ publication.year }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-span-1">
-                                    <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
-                                        <div>{{ publication.journal }}, {{ publication.year }}</div>
-                                    </div>
+                                <div class="text-gray-600"><span>{{ publication.content }}</span>
+                                </div>
+                                <div class="text-amber-700"><span>{{ publication.keywords }}</span>
                                 </div>
                             </div>
-                            <div class="text-gray-600"><span>{{ publication.content }}</span></div>
-                            <div class="text-amber-700"><span>{{ publication.keywords }}</span></div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
 
         {% if resume.certificates %}
-        <section id="publications" class="border-b-2 min-h-screen">
-            <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
-                <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">Certificates</div>
+            <section id="publications" class="border-b-2 min-h-screen">
+                <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
+                    <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">
+                        Certificates
+                    </div>
 
-                <div class="flex flex-col gap-y-20">
-                    {% for certificate in resume.certificates %}
-                        <div class="flex flex-col gap-y-5">
-                            <div class="lg:grid grid-cols-5">
-                                <div class="col-span-4 mb-5">
-                                    <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-amber-700">
-                                        <a href="{{ certificate.doi }}">{{ certificate.title }}</a>
+                    <div class="flex flex-col gap-y-20">
+                        {% for certificate in resume.certificates %}
+                            <div class="flex flex-col gap-y-5">
+                                <div class="lg:grid grid-cols-5">
+                                    <div class="col-span-4 mb-5">
+                                        <div class="font-sans font-bold uppercase text-xl text-gray-700 hover:text-amber-700">
+                                            <a href="{{ certificate.doi }}">{{ certificate.title }}</a>
+                                        </div>
+                                        <div class="font-sans font-semibold text-l text-gray-500">
+                                            {{ certificate.organization }}
+                                        </div>
                                     </div>
-                                    <div class="font-sans font-semibold text-l text-gray-500">
-                                        {{ certificate.organization }}
+                                    <div class="col-span-1">
+                                        <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
+                                            <div>{{ certificate.date.strftime('%Y-%m-%d') }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-span-1">
-                                    <div class="flex gap-x-1 text-sm text-amber-700 font-semibold lg:justify-end">
-                                        <div>{{ certificate.date.strftime('%Y-%m-%d') }}</div>
-                                    </div>
+                                <div class="text-gray-600"><span>{{ certificate.content }}</span>
                                 </div>
                             </div>
-                            <div class="text-gray-600"><span>{{ certificate.content }}</span></div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         {% endif %}
 
         <section id="skills" class="border-b-2 min-h-screen">
             <div class="flex flex-col gap-y-5 p-10 pt-40 mx-auto">
                 <div class="font-sans font-bold uppercase text-5xl text-slate-900 mb-10">Skills</div>
 
-                <div class="flex flex-col gap-y-5">
-                    {% for skill in resume.skills %}
-                    <div class="font-sans font-semibold uppercase text-3xl text-slate-800">{{ skill.title }}</div>
-
-                    <div class="text-gray-600">{{ skill.content }}</div>
-                    {% endfor %}
-                </div>
+                {% for key, value in resume.skills.items() %}
+                    {% if key != '_items' %}
+                        {{ add_skills(1, key, value) }}
+                    {% endif %}
+                {% endfor %}
             </div>
         </section>
     </div>
 {% endblock content %}
+
+{% macro add_skills(index, category, dict) %}
+    {% set font_sizes = ['xl', '3xl'] %}
+    {% set font_size = font_sizes[index] %}
+    <div class="font-sans font-bold uppercase text-{{ font_size }} text-slate-800">{{ category }}</div>
+
+    <div class="flex flex-col">
+        {% for skill in dict['_items'] %}
+            <div class="flex flex-wrap gap-x-2">
+                <div class="font-sans text-slate-800">{{ skill.title }}</div>
+                <div class="mb-6 h-1 w-full bg-neutral-200 dark:bg-neutral-600">
+                    <div class="h-1 bg-amber-700"
+                         style="width: {{ skill.level }}%"></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if dict.keys() %}
+        {% for k, v in dict.items() %}
+            {% if k != '_items' %}
+                {{ add_skills([0, index-1]|max, k, v) }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{%- endmacro %}
